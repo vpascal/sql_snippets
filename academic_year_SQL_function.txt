@@ -1,0 +1,17 @@
+create or replace FUNCTION academic_year (term_in IN VARCHAR2) 
+
+RETURN NUMBER
+
+IS  cnumber NUMBER;
+
+BEGIN
+    SELECT
+        academic_year
+    INTO cnumber
+    FROM
+        HEI_DM.DIM_TERM
+    WHERE
+        term_code = term_in;
+
+    return(cnumber);
+END academic_year;

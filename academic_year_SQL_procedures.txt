@@ -1,0 +1,34 @@
+create or replace PROCEDURE get_academic_year_ii
+(
+   term_in varchar2
+   )
+   
+IS  term_out  HEI_DM.DIM_TERM%ROWTYPE;
+
+BEGIN
+      SELECT *
+      into term_out
+      FROM HEI_DM.DIM_TERM
+      WHERE term_code = term_in;
+      DBMS_OUTPUT.put_line ('Academic year: '|| term_out.academic_year || ', '|| term_out.term );
+
+END;
+
+************************
+
+
+create or replace PROCEDURE get_academic_year
+(
+   term_in varchar2
+   )
+   
+IS  term_out  number;
+
+BEGIN
+      SELECT academic_year
+      into term_out
+      FROM HEI_DM.DIM_TERM
+      WHERE term_code = term_in;
+      DBMS_OUTPUT.put_line ('Academic year: '|| term_out);
+
+END;
